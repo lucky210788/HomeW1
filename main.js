@@ -64,8 +64,6 @@ function benchArrayForIn() {
     console.log('Array : for in - '+result);
 }
 
-
-
 function benchObgFor() {
     var dateStart = Date.now();
     for (var i = 0; i < n; i++) {
@@ -101,8 +99,6 @@ function benchObg2ForIn() {
     var result = Date.now() - dateStart;
     console.log('Obj2 : for in - ' + result);
 }
-
-
 
 benchArrayFor();
 benchArrayForIn();
