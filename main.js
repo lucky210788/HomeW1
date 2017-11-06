@@ -46,36 +46,69 @@ for (var i = 0; i < n; i++) {
     obj2['aa' + i] = 'aa' + i;
 }
 
-function benchArr(arr) {
-    for (var key in arr) arr[key]++;
+function benchArrayFor() {
+    var dateStart = Date.now();
+    for (var i = 0; i < n; i++) {
+        arr[i] = arr[i]+'x';
+    }
+    var result = Date.now() - dateStart;
+    console.log('Array : for - '+result);
 }
 
-function benchArr2(arr) {
-    for (var i = 0; i < arr.length; i++) arr[i]++;
+function benchArrayForIn() {
+    var dateStart = Date.now();
+    for (var key in arr) {
+        arr[key] = arr[key]+'x';
+    }
+    var result = Date.now() - dateStart;
+    console.log('Array : for in - '+result);
 }
 
-function benchObg1(obj1) {
-    for (var key in obj1) obj1[key]++;
+
+
+function benchObgFor() {
+    var dateStart = Date.now();
+    for (var i = 0; i < n; i++) {
+        obj1[i] = obj1[i]+'x';
+    }
+    var result = Date.now() - dateStart;
+    console.log('Obj1 : for - ' + result);
 }
 
-function benchObg1For(obj1) {
-    for (var i = 0; i < n; i++) obj1[i]++;
+function benchObgForIn() {
+    var dateStart = Date.now();
+    for (var key in obj1) {
+        obj1[key] = obj1[key]+'x';
+    }
+    var result = Date.now() - dateStart;
+    console.log('Obj1 : for in - ' + result);
 }
 
-function benchObg2(arr) {
-    for (var key in arr) arr[key]++;
+function benchObg2For() {
+    var dateStart = Date.now();
+    for (var i = 0; i < n; i++) {
+        obj2[i] = arr[i]+'x';
+    }
+    var result = Date.now() - dateStart;
+    console.log('Obj2 : for - ' + result);
 }
 
-function benchObg2For(arr) {
-    for (var i = 0; i < arr.length; i++) arr[i]++;
+function benchObg2ForIn() {
+    var dateStart = Date.now();
+    for (var key in obj2) {
+        obj2[key] = arr[key]+'x';
+    }
+    var result = Date.now() - dateStart;
+    console.log('Obj2 : for in - ' + result);
 }
 
-function bench(f) {
-    var date = new Date();
-    for (var i = 0; i < 10000; i++) f(arr);
-    return new Date() - date;
-}
 
-alert('Array : for in - ' + bench(benchArr) + 'мс for - ' + bench(benchArr2) + 'мс');
-alert('Obj1 : for in - ' + bench(benchObg1) + 'мс for - ' + bench(benchObg1For) + 'мс');
-alert('Obj2 : for in - ' + bench(benchObg2) + 'мс for - ' + bench(benchObg2For) + 'мс');
+
+benchArrayFor();
+benchArrayForIn();
+
+benchObgFor();
+benchObgForIn();
+
+benchObg2For();
+benchObg2ForIn();
